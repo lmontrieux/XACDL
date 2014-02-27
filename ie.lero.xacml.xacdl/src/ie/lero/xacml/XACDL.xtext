@@ -1,0 +1,49 @@
+grammar ie.lero.xacml.XACDL with org.eclipse.xtext.common.Terminals
+
+generate xACDL "http://www.lero.ie/xacml/XACDL"
+
+Model:
+	attributeStore += AttributeStore
+	(policysets += PolicySet)*
+	(requests += Request)*
+;
+
+AttributeStore:
+	'attributes {'
+		(attributes += Attribute)*
+	'}'
+;
+
+Attribute:
+	name=ID ':' type=ID
+;
+
+Request:
+	'request ' name=ID '{'
+		'subject' subjectName=ID
+		(subjectAttributes += SubjectAttribute)*
+		'action' actionName=ID
+		(actionAttributes += ActionAttribute)*
+		'resource' resourceName=ID
+		(environmentAttributes += EnvironmentAttribute)*
+	'}'
+;
+
+SubjectAttribute:
+	'subjectAttribute' attribute = [Attribute] '=' value=ID
+;
+
+ActionAttribute:
+	'actionAttribute' attribute = [Attribute] '=' value=ID
+;
+
+EnvironmentAttribute:
+	'environmentAttribute' attribute = [Attribute] '=' value=ID
+;
+
+PolicySet:
+	'PolicySet' name=ID '{'
+		'combinationAlgorithm' combination=ID
+		
+	'}'
+;

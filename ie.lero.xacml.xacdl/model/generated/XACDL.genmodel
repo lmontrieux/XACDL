@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ie.lero.xacml.xacdl/src-gen" editDirectory="/ie.lero.xacml.xacdl.edit/src"
+    editorDirectory="/ie.lero.xacml.xacdl.editor/src" modelPluginID="ie.lero.xacml.xacdl"
+    forceOverwrite="true" modelName="XACDL" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="ie.lero.xacml.xacdl.edit"
+    editorPluginID="ie.lero.xacml.xacdl.editor" runtimeVersion="2.9">
+  <genPackages prefix="XACDL" basePackage="ie.lero.xacml" disposableProviderFactory="true"
+      fileExtensions="xacdl" ecorePackage="XACDL.ecore#/">
+    <genClasses ecoreClass="XACDL.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//Model/attributeStore"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//Model/policysets"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//Model/requests"/>
+    </genClasses>
+    <genClasses ecoreClass="XACDL.ecore#//AttributeStore">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//AttributeStore/attributes"/>
+    </genClasses>
+    <genClasses ecoreClass="XACDL.ecore#//Attribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Attribute/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Attribute/type"/>
+    </genClasses>
+    <genClasses ecoreClass="XACDL.ecore#//Request">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Request/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Request/subjectName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//Request/subjectAttributes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Request/actionName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//Request/actionAttributes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Request/resourceName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//Request/environmentAttributes"/>
+    </genClasses>
+    <genClasses ecoreClass="XACDL.ecore#//SubjectAttribute">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XACDL.ecore#//SubjectAttribute/attribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//SubjectAttribute/value"/>
+    </genClasses>
+    <genClasses ecoreClass="XACDL.ecore#//ActionAttribute">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XACDL.ecore#//ActionAttribute/attribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//ActionAttribute/value"/>
+    </genClasses>
+    <genClasses ecoreClass="XACDL.ecore#//EnvironmentAttribute">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XACDL.ecore#//EnvironmentAttribute/attribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//EnvironmentAttribute/value"/>
+    </genClasses>
+    <genClasses ecoreClass="XACDL.ecore#//PolicySet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//PolicySet/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//PolicySet/combination"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
