@@ -15,7 +15,23 @@ AttributeStore:
 ;
 
 Attribute:
-	name=ID ':' type=ID
+	SubjectAttribute | ActionAttribute | ResourceAttribute | EnvironmentAttribute
+;
+
+SubjectAttribute:
+	'subject' name=ID ':' type=ID
+;
+
+ActionAttribute:
+	'action' name=ID ':' type=ID
+;
+
+ResourceAttribute:
+	'resource' name=ID ':' type=ID
+;
+
+EnvironmentAttribute:
+	'environment' name=ID ':' type=ID
 ;
 
 Request:
@@ -28,19 +44,19 @@ Request:
 ;
 
 SubjectValue:
-	'subject' attribute = [Attribute] '=' value=ID
+	'subject' attribute = [SubjectAttribute] '=' value=ID
 ;
 
 ActionValue:
-	'action' attribute = [Attribute] '=' value=ID
+	'action' attribute = [ActionAttribute] '=' value=ID
 ;
 
 ResourceValue:
-	'resource' attribute = [Attribute] '=' value=ID
+	'resource' attribute = [ResourceAttribute] '=' value=ID
 ;
 
 EnvironmentValue:
-	'environment' attribute = [Attribute] '=' value=ID
+	'environment' attribute = [EnvironmentAttribute] '=' value=ID
 ;
 
 PolicySet:
