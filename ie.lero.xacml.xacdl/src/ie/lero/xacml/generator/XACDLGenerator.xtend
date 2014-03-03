@@ -8,6 +8,9 @@ import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import ie.lero.xacml.xACDL.Request
 import ie.lero.xacml.xACDL.Model
+import ie.lero.xacml.xACDL.PolicySet
+import ie.lero.xacml.xACDL.Target
+import ie.lero.xacml.xACDL.Rule
 
 /**
  * Generates code from your model files on save.
@@ -21,12 +24,33 @@ class XACDLGenerator implements IGenerator {
 		for (Request request:model.requests) {
 			fsa.generateFile(request.name + ".xml", toJavaCode(request));
 		}
+		for (PolicySet policySet:model.policysets) {
+			fsa.generateFile(policySet.name + ".xml", toJavaCode(policySet));
+		}
 	}
 	
 	def name(Request request) {
 		return request.name
 	}
 	
+	def name(PolicySet policySet) {
+		return policySet.name
+	}
+	
+	def toJavaCode(PolicySet pSet) '''
+	<PolicySet PolicySetId="«pSet.name»" PolicyCOmbiningAlgId="«pSet.combination»">
+		<Target>
+			<Subjects>
+				«FOR subj:pSet.target.head.subjectMatches»
+				<SubjectMatch MatchId="«subj.operator.head.name»">
+					<AttributeValue DataType="http:/www.w3.org/2001/XMLSchema#String">«subj.value»</AttributeValue>
+					<SubjectAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeTd="«subj.attribute.name»">
+				</SubjectMatch>
+				«ENDFOR»
+			</Subjects>
+		</Target>
+	</PolicySet>
+	'''
 	
 	def toJavaCode(Request req) '''
 	<Request xmlns="urn:oasis:names:tc:xacml:2.0:context:schema:os" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">

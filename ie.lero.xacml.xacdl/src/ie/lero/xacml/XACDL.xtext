@@ -42,8 +42,52 @@ EnvironmentAttribute:
 ;
 
 PolicySet:
-	'PolicySet' name=ID '{'
+	'policyset' name=ID '{'
 		'combinationAlgorithm' combination=ID
+		target+=Target
+		(policies += Policy)*
+	'}'
+;
+
+Policy:
+	'policy' name=ID '{'
+		target += Target
+		(rules += Rule)*
+	'}'
+;
+
+Rule:
+	'rule' name=ID 'effect' effect=ID '{'
+		target+=Target
+		(conditions += Condition)*
+	'}'
+;
+
+Condition:
+	'condition' '{'
 		
 	'}'
 ;
+
+Target:
+	'target' '{'
+		'subjects {'
+			(subjectMatches+=Match)*
+		'}'
+		'resources {'
+			(resourceMatches+=Match)*
+		'}'
+		'actions {'
+			(actionMatches+=Match)*
+		'}'
+	'}'
+;
+
+Match:
+	attribute=[Attribute] operator+=Operator value=ID
+;
+
+Operator:
+	name=ID
+;
+
