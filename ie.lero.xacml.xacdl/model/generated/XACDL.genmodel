@@ -19,30 +19,62 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Attribute/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Attribute/type"/>
     </genClasses>
+    <genClasses ecoreClass="XACDL.ecore#//SubjectAttribute"/>
+    <genClasses ecoreClass="XACDL.ecore#//ActionAttribute"/>
+    <genClasses ecoreClass="XACDL.ecore#//ResourceAttribute"/>
+    <genClasses ecoreClass="XACDL.ecore#//EnvironmentAttribute"/>
     <genClasses ecoreClass="XACDL.ecore#//Request">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Request/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Request/subjectName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//Request/subjectAttributes"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Request/actionName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//Request/actionAttributes"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Request/resourceName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//Request/resourceAttributes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//Request/environmentAttributes"/>
     </genClasses>
-    <genClasses ecoreClass="XACDL.ecore#//SubjectAttribute">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XACDL.ecore#//SubjectAttribute/attribute"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//SubjectAttribute/value"/>
+    <genClasses ecoreClass="XACDL.ecore#//SubjectValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XACDL.ecore#//SubjectValue/attribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//SubjectValue/value"/>
     </genClasses>
-    <genClasses ecoreClass="XACDL.ecore#//ActionAttribute">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XACDL.ecore#//ActionAttribute/attribute"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//ActionAttribute/value"/>
+    <genClasses ecoreClass="XACDL.ecore#//ActionValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XACDL.ecore#//ActionValue/attribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//ActionValue/value"/>
     </genClasses>
-    <genClasses ecoreClass="XACDL.ecore#//EnvironmentAttribute">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XACDL.ecore#//EnvironmentAttribute/attribute"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//EnvironmentAttribute/value"/>
+    <genClasses ecoreClass="XACDL.ecore#//ResourceValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XACDL.ecore#//ResourceValue/attribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//ResourceValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="XACDL.ecore#//EnvironmentValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XACDL.ecore#//EnvironmentValue/attribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//EnvironmentValue/value"/>
     </genClasses>
     <genClasses ecoreClass="XACDL.ecore#//PolicySet">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//PolicySet/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//PolicySet/combination"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//PolicySet/target"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//PolicySet/policies"/>
+    </genClasses>
+    <genClasses ecoreClass="XACDL.ecore#//Policy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Policy/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//Policy/target"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//Policy/rules"/>
+    </genClasses>
+    <genClasses ecoreClass="XACDL.ecore#//Rule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Rule/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Rule/effect"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//Rule/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Rule/conditions"/>
+    </genClasses>
+    <genClasses ecoreClass="XACDL.ecore#//Target">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//Target/subjectMatches"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//Target/resourceMatches"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//Target/actionMatches"/>
+    </genClasses>
+    <genClasses ecoreClass="XACDL.ecore#//Match">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XACDL.ecore#//Match/attribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XACDL.ecore#//Match/operator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Match/value"/>
+    </genClasses>
+    <genClasses ecoreClass="XACDL.ecore#//Operator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XACDL.ecore#//Operator/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
