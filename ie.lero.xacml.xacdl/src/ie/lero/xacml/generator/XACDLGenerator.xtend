@@ -55,27 +55,32 @@ class XACDLGenerator implements IGenerator {
 	def toJavaCode(Request req) '''
 	<Request xmlns="urn:oasis:names:tc:xacml:2.0:context:schema:os" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 		<Subject>
-			<Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:subject:subject-id" DataType="http://www.w3.org/2001/XMLSchema#string">
-				<AttributeValue>«req.subjectName»</AttributeValue>
-			</Attribute>
 			«FOR subjectAttr:req.subjectAttributes»
 				<Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:subject:«subjectAttr.attribute.name»" DataType="http://www.w3.org/2001/XMLSchema#string">
 					<AttributeValue>«subjectAttr.value»</AttributeValue>
 				</Attribute>
 			«ENDFOR»
 		</Subject>
-		<Resource>
-			<Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string">
-    			<AttributeValue>«req.resourceName»</AttributeValue>
-  			</Attribute>
-		</Resource>
 		<Action>
-			<Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string">
-    			<AttributeValue>«req.actionName»</AttributeValue>
-  			</Attribute>
+			«FOR actionAttr:req.actionAttributes»
+				<Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:action:«actionAttr.attribute.name»" DataType="http://www.w3.org/2001/XMLSchema#string">
+					<AttributeValue>«actionAttr.value»</AttributeValue>
+				</Attribute>
+			«ENDFOR»
 		</Action>
+		<Resource>
+			«FOR resourceAttr:req.resourceAttributes»
+				<Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:resource:«resourceAttr.attribute.name»" DataType="http://www.w3.org/2001/XMLSchema#string">
+					<AttributeValue>«resourceAttr.value»</AttributeValue>
+				</Attribute>
+			«ENDFOR»
+		</Resource>
 		<Environment>
-		
+			«FOR environmentAttr:req.environmentAttributes»
+				<Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:environment:«environmentAttr.attribute.name»" DataType="http://www.w3.org/2001/XMLSchema#string">
+					<AttributeValue>«environmentAttr.value»</AttributeValue>
+				</Attribute>
+			«ENDFOR»
 		</Environment>
 	</Request>
 	'''

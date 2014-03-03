@@ -20,25 +20,27 @@ Attribute:
 
 Request:
 	'request ' name=ID '{'
-		'subject' subjectName=ID
-		(subjectAttributes += SubjectAttribute)*
-		'action' actionName=ID
-		(actionAttributes += ActionAttribute)*
-		'resource' resourceName=ID
-		(environmentAttributes += EnvironmentAttribute)*
+		(subjectAttributes += SubjectValue)*
+		(actionAttributes += ActionValue)*
+		(resourceAttributes += ResourceValue)*
+		(environmentAttributes += EnvironmentValue)*
 	'}'
 ;
 
-SubjectAttribute:
-	'subjectAttribute' attribute = [Attribute] '=' value=ID
+SubjectValue:
+	'subject' attribute = [Attribute] '=' value=ID
 ;
 
-ActionAttribute:
-	'actionAttribute' attribute = [Attribute] '=' value=ID
+ActionValue:
+	'action' attribute = [Attribute] '=' value=ID
 ;
 
-EnvironmentAttribute:
-	'environmentAttribute' attribute = [Attribute] '=' value=ID
+ResourceValue:
+	'resource' attribute = [Attribute] '=' value=ID
+;
+
+EnvironmentValue:
+	'environment' attribute = [Attribute] '=' value=ID
 ;
 
 PolicySet:
